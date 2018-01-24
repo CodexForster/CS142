@@ -18,6 +18,7 @@ data=0;
 next=NULL; }
 }*head,*tail;
 
+//function prototypes:
 void insert();
 void insertAt();
 void deletenode();
@@ -53,6 +54,9 @@ cin>>op2;
 }while(op2=='y');
 return 0;}
 
+//function definitions start here:
+
+//funcion to insert new node at the end of list
 void insert()
 {node *temp=new node;
 int d;
@@ -71,6 +75,7 @@ else{
 }
 
 
+//function to insert node at any position in the list
 void insertAt()
 {node *temp=new node,*temp2=new node,*temp3= new node;
 temp2=head;
@@ -98,6 +103,7 @@ else{
 }
 
 
+//function to delete the last node of the list
 void deletenode()
 {node *temp=new node;
 temp=head;
@@ -114,6 +120,8 @@ else
 }
 }
 
+
+//function to delete any node in the list 
 void deleteAt(int pos)
 {node *temp=new node;
 temp=head;
@@ -137,6 +145,8 @@ else{
     }
 }
 
+
+//function to count number of nodes in the list
 int countItems()
 {node *temp=new node;
 temp=head;
@@ -153,6 +163,8 @@ else
 }
 
 
+
+//function to display all nodes present in the list
 void display()
 {if(head==NULL)
 cout<<"\nNo Nodes present.";
