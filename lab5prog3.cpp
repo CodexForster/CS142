@@ -1,325 +1,135 @@
 #include <iostream>
-
-
-
+#include <fstream>
+#include <cstdlib>
+#include <ctime>
+ 
 using namespace std;
-
-
-
-class arraybubble
-
+ 
+long length = 1000;
+const long max_length = 300000;
+ 
+int list[max_length];
+ 
+void read()
 {
-
-    int size;
-
-public :
-
-    void insort()
-
+    ifstream fin("random.dat", ios::binary);
+    for (long i = 0; i < length; i++)
     {
-
-        cout << " Enter the size of array : ";
-
-        cin >> size;
-
-        double arr[size];
-
-        cout <<" Enter the elements of the array : "<<endl;
-
-        for (int i=0; i<size; i++)
-
-        {
-
-           cout<<" data "<<i+1<<" : ";
-
-           cin>>arr[i];
-
-        }
-
-        cout<<" This is the array you have entered : "<<endl;
-
-        cout<<" { ";
-
-        for (int i=0; i<size; i++)
-
-        {
-
-           cout<<arr[i]<<"   ";
-
-        }
-
-        cout<<"}"<<endl;
-
-        for (int i=0; i<size; i++)
-
-        {
-
-            for (int j=0;j<size-1; j++)
-
-            {
-
-                 if (arr[j]>arr[j+1])
-
-                 {
-
-                     double temp=0;
-
-                     temp = arr[j];
-
-                     arr[j]= arr[j+1];
-
-                     arr[j+1] = temp;
-
-                 }
-
-            }
-
-        }
-
-        cout<<" This is your array after sorting : "<<endl;
-
-        cout<<" { ";
-
-        for (int k=0; k<size; k++)
-
-        {
-
-           cout<<arr[k]<<"   ";
-
-        }
-
-        cout<<"}";
-
+        fin.read((char*)&list[i], sizeof(int));
     }
-
-};
-
-
-
-class node
-
-{
-
-public :
-
-    double data;
-
-    node *next;
-
-};
-
-
-
-class ll_bubble
-
-{
-
-node *head;
-
-node *tail;
-
-public :
-
-    ll_bubble()
-
-    {
-
-        head = NULL;
-
-        tail = NULL;
-
-    }
-
-
-
-    void input()
-
-    {
-
-        int num;
-
-        cout<<"\n Enter the number of element you want to insert : ";
-
-        cin>>num;
-
-        cout<<" Enter your data : "<<endl;
-
-        for (int i=0; i<num; i++)
-
-        {
-
-            double data;
-
-            cout<<" data "<<i+1<<" : ";
-
-            cin>>data;
-
-            node *temp = new node; //create a new node type object called 'temp'
-
-            temp->data = data;   //data input is inserted in data part of temp
-
-            if (head == NULL)   //condition for empty list
-
-            {
-
-                head=temp;   //make 'head' and 'temp' same
-
-                tail=temp;   //make 'tail' and 'temp' same
-
-                temp->next = NULL;  //points 'next' of temp to null
-
-            }
-
-            else    //condition for nonempty list
-
-            {
-
-                tail->next = temp;  //points 'next' of tail to temp
-
-                temp->next = NULL;  //points 'next' pointer of temp to null
-
-                tail=temp;   //make 'temp' and 'tail' same
-
-            }
-
-        }
-
-    }
-
-    void display_ll()
-
-    {
-
-        node *pos;  //create a new node type pointer called 'pos'
-
-        pos=head;  //makes the address of 'pos' and 'head' same
-
-        while (pos != NULL)
-
-        {
-
-            cout<<pos->data<<" -> ";  //display the elements
-
-            pos=pos->next; //goes to next element
-
-        }
-
-        cout<<"NULL \n";
-
-    }
-
-    void sort_ll()
-
-    {
-
-        node *pos;
-
-        pos = head;
-
-        while (pos->next != NULL)
-
-        {
-
-            node *post;
-
-            post = head;
-
-            while (post->next != NULL)
-
-            {
-
-              if (post->data > (post->next)->data)
-
-              {
-
-                  double temp;
-
-                  temp = post->data;
-
-                  post->data = (post->next)->data;
-
-                  (post->next)->data = temp;
-
-              }
-
-              post = post->next;
-
-            }
-
-            pos = pos->next;
-
-        }
-
-    }
-
-};
-
-
-
-int main()
-
-{
-
-    arraybubble ab;
-
-    ll_bubble llb;
-
-    int choice;
-
-    while (choice != 0)
-
-    {
-
-        cout<<"\n Choose what you want to use for bubble sorting :\n 1. Array     2. Linked list.";
-
-        cout<<"\n Enter '0' to exit."<<endl<<" Choice : ";
-
-        cin>>choice;
-
-        switch (choice)
-
-        {
-
-          case 1 :
-
-            ab.insort();
-
-            break;
-
-          case 2 :
-
-            llb.input();
-
-            cout<<" These are your data : \n ";
-
-            llb.display_ll();
-
-            llb.sort_ll();
-
-            cout<<" These are your data after sorting : \n ";
-
-            llb.display_ll();
-
-            break;
-
-          case 0 :
-
-            break;
-
-          default :
-
-            cout<<" Enter a valid choice. \n ";
-
-            break;
-
-        }
-
-        cout<<"\n Enter any key and hit 'enter' to do again. \n Enter '0' and hit 'enter to exit."<<endl;
-
-        cin>>choice;
-
-    }
-
-return 0;
-
+    fin.close();
 }
+ 
+//function definition for bubble sort
+void bubbleSort()
+{
+    int temp;
+    for(long i = 0; i < length; i++)
+    {
+        for(long j = 0; j < length-i-1; j++)
+        {
+            if (list[j] > list[j+1])
+            {
+                temp        = list[j];
+                list[j]     = list[j+1];
+                list[j+1]   = temp;
+            }
+        }
+    }
+}
+ 
+ 
+ 
+long partition(long left, long right)
+{
+    int pivot_element = list[left];
+    int lb = left, ub = right;
+    int temp;
+ 
+    while (left < right)
+    {
+        while(list[left] <= pivot_element)
+            left++;
+        while(list[right] > pivot_element)
+            right--;
+        if (left < right)
+        {
+            temp        = list[left];
+            list[left]  = list[right];
+            list[right] = temp;
+        }
+    }
+    list[lb] = list[right];
+    list[right] = pivot_element;
+    return right;
+}
+ 
+//function definition for quick sort
+void quickSort(long left, long right)
+{
+    if (left < right)
+    {
+        long pivot = partition(left, right);
+        quickSort(left, pivot-1);
+        quickSort(pivot+1, right);
+    }
+}
+ 
+int main()
+{
+    double t1, t2;
+ 
+    for (length = 1000; length <= max_length; )
+    {
+        cout << "\nLength\t: " << length << '\n';
+ 
+        read();
+        t1 = clock();
+        bubbleSort();
+        t2 = clock();
+        cout << "Bubble Sort\t: " << (t2 - t1)/CLK_TCK << " sec\n";
+ 
+        read();
+        t1 = clock();
+        quickSort(0, length - 1);
+        t2 = clock();
+        cout << "Quick Sort\t: " << (t2 - t1)/CLK_TCK << " sec\n";
+ 
+        switch (length)
+        {
+        case 100 : 	
+        	length = 1000;
+        case 1000 :
+            length = 5000;
+            break;
+        case 5000 :
+            length = 10000;
+            break;
+        }
+    }
+ 
+    return 0;
+}
+
+
+/*Please note that the above program requires random.dat, which can be generated from the following code:
+#include <fstream>
+#include <cstdlib>
+#include <ctime>
+using namespace std;
+const size_t length = 300000;
+ 
+int main()
+{    ofstream fout("random.dat", ios::binary);
+    srand(time(NULL));
+    int r;
+    for (size_t i = 0; i < length; i++)
+    {
+        r = rand();
+        fout.write((char*)&r, sizeof(r));
+    }
+    fout.close();
+    return 0;
+}
+
+/*
