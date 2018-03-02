@@ -1,4 +1,3 @@
-//----------->> QUICKSORT IN AN LINKED LIST <<--------------
 #include <iostream>
 using namespace std;
 
