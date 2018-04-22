@@ -34,7 +34,7 @@ int main()
 	int op1,e;
 	char op2;
 	do{
-		cout<<"\nEnter option\n1)Insert\n2)Search\n3)Delete\n4)Dislay\n5)Count\n6)Range";
+		cout<<"\nEnter option\n1)Insert\n2)Search\n3)Delete\n4)Display\n5)Count\n6)Range";
 		cin>>op1;
 		switch(op1)
 		{
@@ -252,7 +252,7 @@ int count(node *temp)
 	
 }
 
-//range functions
+//range function
 int range(node *temp, int one, int two)
 {
 if(temp==NULL)
