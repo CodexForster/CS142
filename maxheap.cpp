@@ -1,8 +1,15 @@
 #include <iostream>
 using namespace std;
 
+//global heap array and length variable
 int heap[100];
 int len=0;
+
+
+
+//function definitions start here
+
+//function to insert element
 void insert(int key)
 {
 	heap[len]=key;
@@ -22,6 +29,8 @@ void insert(int key)
 	
 }
 
+
+//function to display heap
 void display()
 {
 	for(int i=0;i<len;i++)
@@ -30,6 +39,8 @@ void display()
 	}
 }
 
+
+//function to remove element
 void remove_h()
 {
 	heap[0]=heap[len-1];
@@ -49,7 +60,6 @@ void remove_h()
 	
 		else if(heap[c1]!=0 && heap[c2]!=0)
 	{
-		cout<<"\n block1\n";
 		if(heap[c1]>heap[c2])
 		{
 			
@@ -75,7 +85,6 @@ void remove_h()
 	}
 	else if(heap[c1]==0 || heap[c2]==0)
 	{
-		cout<<"\n block2\n";
 		if(heap[c1]!=0)
 		{
 			if(heap[c1]>heap[i])
