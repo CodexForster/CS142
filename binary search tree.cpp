@@ -20,7 +20,7 @@ class node
 } *head;
 
 
-
+//function prototypes
 void insert();
 int search(int a);
 void deletenode();
@@ -71,7 +71,7 @@ int main()
 
 //function definitions
 
-
+//insert function
 void insert(){
 		int data;
 		cout<<"\nEnter data";
@@ -112,7 +112,7 @@ void insert(){
 	}
 
 
-
+//display function
 int display(node * temp)
 {
 	if(temp==NULL)
@@ -124,6 +124,8 @@ int display(node * temp)
 }
 	
 
+
+//function to search given an element
 int search(int a)
 {
 int b=1;
@@ -160,6 +162,8 @@ return 0;
 }}
 
 
+
+//function to delete an element
 void deletenode()
 {int a;
 cout<<"\nEnter the number you want to delete";
@@ -237,6 +241,7 @@ if(search(a)==1)
 }
 }
 
+//funtion to count no. of elements
 int count(node *temp)
 {
 	if(temp==NULL)
@@ -247,6 +252,7 @@ int count(node *temp)
 	
 }
 
+//range functions
 int range(node *temp, int one, int two)
 {
 if(temp==NULL)
